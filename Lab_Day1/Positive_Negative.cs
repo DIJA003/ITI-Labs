@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Lab_Day1
+namespace Lab1_PositiveOrNegative
 {
     public class Positive_Negative
     {
