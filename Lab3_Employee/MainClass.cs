@@ -30,17 +30,17 @@ namespace Lab3_Employee
                         {
                             addEmployee(employee, currCount);
                             currCount++;
-                            Console.WriteLine("Employee add successfully");
+                            Console.WriteLine("Employee add successfully, Press Enter to continue");
                         }
                         else
                         {
-                            Console.WriteLine("Limit of Employees reached");
+                            Console.WriteLine("Limit of Employees reached, Press Enter to continue");
                         }
                         break;
 
                     case 2:
                         if (currCount > 0) getAllEmployee(employee, currCount);
-                        else Console.WriteLine("There is no employee recorded");
+                        else Console.WriteLine("There is no employee recorded, Press Enter to continue");
                         break;
 
                     case 3:
@@ -51,7 +51,7 @@ namespace Lab3_Employee
                             updateEmployee(employee, currCount, employeeID);
 
                         }
-                        else Console.WriteLine("There is no employee recorded");
+                        else Console.WriteLine("There is no employee recorded, Press Enter to continue");
                         break;
 
                     case 4:
@@ -61,7 +61,7 @@ namespace Lab3_Employee
                             int index = findEmployeeByID(employee, currCount, int.Parse(Console.ReadLine()));
                             employee[index].info();
                         }
-                        else Console.WriteLine("There is no employee recorded");
+                        else Console.WriteLine("There is no employee recorded, Press Enter to continue");
                         break;
 
                     default:
