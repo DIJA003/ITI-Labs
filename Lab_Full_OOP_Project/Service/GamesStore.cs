@@ -134,9 +134,9 @@ namespace Lab_Full_OOP_Project.Service
             Player player = GetPlayerById(id);
             if (player != null)
             {
-                Console.WriteLine("Enter new name: ");
+                Console.Write("Enter new name: ");
                 string newName = Console.ReadLine();
-                Console.WriteLine("Enter new email:");
+                Console.Write("Enter new email:");
                 string newemail = Console.ReadLine();
                 player.UpdateInfo(newName, newemail);
             }
@@ -160,7 +160,7 @@ namespace Lab_Full_OOP_Project.Service
                 Console.WriteLine("Player inforamtion: ");
                 player.DisplayInfo();
                 Console.WriteLine("Games purchased: ");
-                if(player.ownedGames.Length == 0) Console.WriteLine("no games purchased");
+                if(player.purchaseCnt == 0) Console.WriteLine("no games purchased");
                 else foreach(Game game in player.ownedGames) if (game!=null) Console.WriteLine($"- {game.Title}");
             }
             else Console.WriteLine("there is no player with this id");
