@@ -10,49 +10,26 @@ namespace Lab5_Stack_Implementation
     {
         private readonly T[] items;
         private int top;
-        private const int capacity = 10;
-        public MyStack() 
+        public MyStack(int capacity) 
         {
             items = new T[capacity];
             top = -1;
         }
-        public bool isEmpty()
-        {
-            return top == -1;
-        }
-        public bool isFull()
-        {
-            return top == items.Length-1;
-        }
+        public bool isEmpty() { return top == -1; }
+        public bool isFull() { return top == items.Length - 1; }
         public void Push(T item)
         {
-            if (isFull())
-            {
-                Console.WriteLine("Stack is full");
-                Console.ReadKey(true);
-                return;
-            }
-            top++;
-            items[top] = item;
+            if (isFull()) throw new InvalidOperationException("Stack is full");
+            items[++top] = item;
         }
         public T Pop()
         {
-            if (isEmpty())
-            {
-                Console.WriteLine("Stack is empty");
-                return default(T)!;
-            }   
-            T item = items[top];
-            top--;
-            return item;
+            if (isEmpty()) throw new InvalidOperationException("Stack is empty");
+            return items[top--];
         }
         public T Peek()
         {
-            if (isEmpty())
-            {
-                Console.WriteLine("Stack is empty");
-                return default(T)!;
-            }
+            if (isEmpty()) throw new InvalidOperationException("Stack is empty");
             return items[top];
         }
 

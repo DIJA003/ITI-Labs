@@ -12,6 +12,7 @@ namespace Lab5_Dynamic_Array
         private int size;
         private const int firstSize = 10;
         
+
         public DynamicArray()
         {
             arr = new int[firstSize];

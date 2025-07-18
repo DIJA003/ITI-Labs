@@ -9,7 +9,7 @@ using Lab_Full_OOP_Project.Models.Enums;
 
 namespace Lab_Full_OOP_Project.Models
 {
-    public class Game : IPurchasable
+    public class Game : Base,IPurchasable
     {
         public int Id { get; private set; }
         public string Title { get; private set; }
@@ -28,6 +28,8 @@ namespace Lab_Full_OOP_Project.Models
             platform = Platform;
             Price = price;
             Stats = new GameStats(0, 0);
+            CreatedOn = DateTime.Now;
+            CreatedBy = "Admin";
         }
 
         public Game(int id, string title, GameType Type, PlatformType Platform, double price)
@@ -38,6 +40,8 @@ namespace Lab_Full_OOP_Project.Models
             platform = Platform;
             Price = price;
             Stats = new GameStats(0, 0);
+            CreatedOn = DateTime.Now;
+            CreatedBy = "Admin";
         }
 
         public void UpdateStats(int downloads)
@@ -50,13 +54,15 @@ namespace Lab_Full_OOP_Project.Models
                 
                 Dlcs[DlcCnt++] = dlc;
                 Stats = new GameStats(Stats.Downloads,DlcCnt);
+                UpdatedOn = DateTime.Now;
+                UpdatedBy = "Admin";
             }
             else Console.WriteLine("cannot add more DLCs");
         }
 
         public void DisplayInfo()
         {
-            Console.WriteLine($"{Title} ({type}) - ${Price:F2}");
+            Console.WriteLine($"{Title} ({type}) - ${Price:F2} |  Created: {CreatedOn}, Deleted: {IsDeleted}");
             Stats.Display();
         }
     }
