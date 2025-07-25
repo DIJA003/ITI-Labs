@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+@* @using Lab7_MVCday1.Controllers; *@
+@* @model List<Players> *@
+
+<h1>Hello ya @ViewBag.Name</h1>
+
+@*
+<table id="myTable" class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var player in Model)
+        {
+            <tr>
+                <th scope="col">@player.ID</th>
+                <th scope="col">@player.Name</th>
+
+            </tr>
+            i++;
+        }
+    </tbody>
+
+</table> 
+*@

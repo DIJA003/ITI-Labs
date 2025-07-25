@@ -52,7 +52,7 @@ namespace Lab7_Linq_Methods_manually_implementation
         public static List<T> TakeWhileBy<T>(this List<T> items, Func<T, bool> predicate)
         {
             List<T> res = new List<T>();
-            foreach (var item in items) 
+            foreach (var item in items)
             {
                 if (!predicate(item)) break;
                 res.Add(item);
@@ -66,8 +66,8 @@ namespace Lab7_Linq_Methods_manually_implementation
             foreach (var item in items)
             {
                 if (flag && !predicate(item)) flag = false;
-                if(!flag) res.Add(item);
-                
+                if (!flag) res.Add(item);
+
             }
             return res;
         }
@@ -77,16 +77,16 @@ namespace Lab7_Linq_Methods_manually_implementation
             List<T> res = new List<T>();
             foreach (var item in items)
             {
-                if(set.Add(item)) res.Add(item);
+                if (set.Add(item)) res.Add(item);
             }
             return res;
         }
         public static List<T> MyOrderBy<T, K>(this List<T> items, Func<T, K> selector) where K : IComparable<K>
         {
-            List<T> res = new List<T> (items);
+            List<T> res = new List<T>(items);
             items.Sort((x, y) => selector(x).CompareTo(selector(y)));
             return res;
-            
+
         }
         public static List<T> MyOrderByDescending<T, K>(this List<T> items, Func<T, K> selector) where K : IComparable<K>
         {
@@ -177,18 +177,18 @@ namespace Lab7_Linq_Methods_manually_implementation
             }
             return res;
         }
-        
+
         public static List<T> MyConcat<T>(this List<T> first, List<T> second)
         {
             List<T> res = new(first);
             res.AddRange(second);
             return res;
         }
-
+        // adjust to null parameter
         public static int MyCount<T>(this List<T> items, Func<T, bool> predicate)
         {
             int count = 0;
-            foreach (var item in items) if(predicate(item)) count++; 
+            foreach (var item in items) if (predicate(item)) count++;
             return count;
         }
 
@@ -229,7 +229,7 @@ namespace Lab7_Linq_Methods_manually_implementation
         {
             foreach (var item in items)
             {
-                if(!predicate(item)) return false;
+                if (!predicate(item)) return false;
             }
             return true;
         }
@@ -255,8 +255,30 @@ namespace Lab7_Linq_Methods_manually_implementation
 
         public static double MyAverage<T>(this List<T> items, Func<T, int> predicate)
         {
-            return items.MySum(predicate) / (double)items.MyCount((x =>true));
+            return items.MySum(predicate) / (double)items.MyCount((x => true));
         }
+
+
+        public static List<List<T>> MyChunk<T>(this List<T> items, int chunkSize)
+        { 
+
+            List<List<T>> result = new List<List<T>>();
+
+            for (int i = 0; i < items.Count; i += chunkSize)
+            {
+                List<T> chunk = new List<T>();
+
+                for (int j = i; j < i + chunkSize && j < items.Count; j++)
+                {
+                    chunk.Add(items[j]);
+                }
+
+                result.Add(chunk);
+            }
+
+            return result;
+        }
+
         public static List<R> MyType<T, R>(this List<T> list)
         {
             List<R> result = new();
